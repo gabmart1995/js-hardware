@@ -1,6 +1,6 @@
 const { Board, Led } = require('johnny-five');
 
-const board = new Board({ port: 'COM6' });
+const board = new Board({ repl: true });
 
 // tabla lista
 board.on('ready', function() {
