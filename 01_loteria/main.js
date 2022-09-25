@@ -14,7 +14,6 @@ function pressButton() {
 	const numberSelected = generatenumber( 1, 10 );
 	intentos = intentos + 1;
 
-	
 	if ( numberSelected === winner ) {
 
 		console.log('felicidades, ganaste el juego en el intento %d', intentos );
@@ -45,7 +44,6 @@ function main() {
 
 	// events
 	button.on("down", pressButton );
-	
 }
 
 // setup
@@ -57,3 +55,12 @@ const board = new Board({ repl: true });
 
 // Event API 
 board.on("ready", main );
+
+// fail board
+board.on('fail', function( event ) {
+	console.log(
+	  '%s envio un "fallo" mensaje: %s', 
+	  event.class, 
+	  event.message
+	);
+  });
