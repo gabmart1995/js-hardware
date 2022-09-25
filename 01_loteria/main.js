@@ -26,34 +26,23 @@ function pressButton() {
 
 const winner = generatenumber( 1, 10 );
 let intentos = 0;
-console.log("Loteria: Pruebe suerte pulse el boton para generar un numero y genar el premio");
 
 // ejecutamos el programa
 const board = new five.Board({ port:"COM3", repl: true });
 
 // Event API 
 board.on("ready", function() {
-
+	
 	let button = new five.Button(2);
-
+	
 	// inyecta al repl de jhonny-five mi instancia del boton
 	board.repl.inject({
-    	button: button,
+		button: button,
     	board: board
-  	});
-
-  	button.on("down", pressButton );
-
-	 // "hold" the button is pressed for specified time.
-	 //        defaults to 500ms (1/2 second)
-	 //        set
-	 /*button.on("hold", function() {
-	    console.log("hold");
-	 });*/
-
-	 // "up" the button is released
-	 /*button.on("up", function() {
-	    console.log("up");
-	 });*/
+	});
+	
+	button.on("down", pressButton );
+	
+	console.log("Loteria: Pruebe suerte pulse el boton para generar un numero y genar el premio");
 });
 

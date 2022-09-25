@@ -1,10 +1,10 @@
 ## 01_lotery_game
 
-Game of lotery, developed with johnny-five and arduino uno. To win just press the button if it matches the number you win the game
+Juego de loteria, desarrollado con johnny-five and arduino uno. Para ganar presiona el boton para saber si ganaste el juego.
 
-- It consists of a push button and a resistor.
-- The digital port used is number 2
-- This example is for running events from a physical device. 
+- Consiste en un pulsador una resistencia.
+- Puerto digital numero 2
+- Este evento se utiliza para capturar eventos desde dispositivos fisicos. 
 
 ### references
 ["johnny-five button"](http://johnny-five.io/examples/button/)
