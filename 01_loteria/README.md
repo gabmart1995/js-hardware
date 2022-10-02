@@ -1,6 +1,8 @@
-# jhonny-five-example
+# 01_loteria
 
-- primer ejemplo de obtencion de datos con arduino 
-- se utilizo un juego de loteria para interaccion hardware software
-- el circuito en protoboard consta de un pulsador y una resistencia
-- se genera un numero aleatorio con cada pulsasión
+### Resumen
+
+- Primer ejemplo de obtención de datos con arduino. 
+- Se utilizo un juego de loteria para interacción hardware y software.
+- El circuito en protoboard consta de un pulsador, y una resistencia.
+- Se genera un numero aleatorio con cada pulsasión y verifica si eres el ganador.
