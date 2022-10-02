@@ -1,8 +1,16 @@
-# 01_loteria
+## 01_lotery_game
 
-### Resumen
+Juego de loteria, desarrollado con johnny-five and arduino uno. Para ganar presiona el boton para saber si ganaste el juego.
 
-- Primer ejemplo de obtención de datos con arduino. 
-- Se utilizo un juego de loteria para interacción hardware y software.
-- El circuito en protoboard consta de un pulsador, y una resistencia.
-- Se genera un numero aleatorio con cada pulsasión y verifica si eres el ganador.
+- Consiste en un pulsador una resistencia.
+- Puerto digital numero 2
+- Este evento se utiliza para capturar eventos desde dispositivos fisicos. 
+
+### references
+["johnny-five button"](http://johnny-five.io/examples/button/)
+
+
+### plans
+[![plans-lotery](http://johnny-five.io/img/breadboard/button.png)](http://johnny-five.io/img/breadboard/button.png)
+
+
