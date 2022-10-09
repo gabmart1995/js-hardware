@@ -1,7 +1,7 @@
 const SEGMENTS_LENGTH = 7;
 const BINARY_SEGMENTS = [
     0b1000000, // 0
-	0b1111001, // 1
+	  0b1111001, // 1
   	0b0100100, // 2
   	0b0110000, // 3
   	0b0011001, // 4
