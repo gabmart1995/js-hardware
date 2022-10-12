@@ -1,11 +1,24 @@
-function bitRead( buffer, posicion ) {
-  
-    let result = String.fromCharCode( buffer[ posicion ]);
-    result = Number.parseInt( result, 2 );
+const five = require('johnny-five');
 
-    return result; 
-}
+/**
+ * Lee los bits en la posicion especificada
+ * @param {Buffer} buffer buffer que dibuja el numero seleccionado en el display
+ * @param {number} posicion indice para seleccionar la posicion del bit
+ * @returns {0|1}
+ */
+function leerBit( buffer, posicion ) {
   
+    let resultado = String.fromCharCode( buffer[ posicion ]);
+    resultado = Number.parseInt( resultado, 2 );
+
+    return resultado; 
+}
+
+/**
+ * transforma el numero a string
+ * @param {number} numero numero que dibuja el segmento
+ * @returns {string}
+ */
 function transformarNumeroString( numero ) {
     
     let numeroResultado = numero.toString( 2 ); // transforma a binary string
@@ -22,7 +35,12 @@ function transformarNumeroString( numero ) {
   
     return numeroResultado;
 }
-  
+
+/**
+ * transforma la cadena binaria en datos buffer
+ * @param {string} cadenaBinaria cadena binaria en formato string
+ * @returns {Buffer}
+ */
 function transformarStringBinario( cadenaBinaria ) {
   
     const buffer = Buffer.alloc( SEGMENTS_LENGTH, 00 );
@@ -33,53 +51,58 @@ function transformarStringBinario( cadenaBinaria ) {
   
     return buffer
 }
-  
+
+/**
+ * funcion que ilumina el segmento en el arduino
+ * @param {Buffer} buffer buffer de datos
+ */
 function iluminarSegmento( buffer ) {
     
-    for ( const index in PORTS ) {
-  
-      let bit = bitRead( buffer, index );
-      console.log({ puerto: PORTS[index], bit, position });
+    for ( let i = 0; i < PORTS.length; i++ ) {
+      let bit = leerBit( buffer, i );
+      board.digitalWrite( PORTS[i], bit );
+      
+      console.log({ puerto: PORTS[i], bit, posicion });
     }
   
-    // a
-    // board.digitalWrite( PORTS[0], 0 );
-  
-    // b
-    // board.digitalWrite( PORTS[1], 0 );
-  
-    // c
-    // board.digitalWrite( PORTS[2], 0 );
-  
-    // d
-    // board.digitalWrite( PORTS[3], 0 );
-  
-    // e
-    // board.digitalWrite( PORTS[4], 0 );
-  
-    // f
-    // board.digitalWrite( PORTS[5], 0 );
-  
-    // g
-    // board.digitalWrite( PORTS[6], 1 );
-  
-    if ( position >= 9 ) {
-      position = 0; // reset position
+    // ejemplo de un numero "0"
+    // board.digitalWrite( PORTS[0], 0 ); // a
+    // board.digitalWrite( PORTS[1], 0 ); // b
+    // board.digitalWrite( PORTS[2], 0 ); // c
+    // board.digitalWrite( PORTS[3], 0 ); // d
+    // board.digitalWrite( PORTS[4], 0 ); // e
+    // board.digitalWrite( PORTS[5], 0 );  // f
+    // board.digitalWrite( PORTS[6], 1 ); // g
+    
+    if ( posicion === 9 ) {
+      posicion = 0; // reset position
       
     } else {
-      position++;       
+      posicion++;       
   
     }
-    
-    console.log('\n');
+
+    // nueva linea
+    console.log('\n'); 
 }
 
 function main() {
-    iluminarSegmento( BINARY_SEGMENTS[position] );
+  
+  // abrimos los puertos en modo OUTPUT
+  for ( let i = 0; i < PORTS.length; i++ ) {
+    board.pinMode( PORTS[i], five.Pin.OUTPUT );
+  }
+
+  // inicializamos el timer
+  timer = setInterval( function() {
+    iluminarSegmento( BINARY_SEGMENTS[posicion] );
+  }, 1000 );
 }
   
 const SEGMENTS_LENGTH = 7;
-const PORTS = [ 2, 3, 4, 5, 6, 7, 8 ].reverse();  // se invierte el orden de los puertos sin afectar el indice
+
+// se invierte el orden de los puertos sin afectar el indice
+const PORTS = ([ 2, 3, 4, 5, 6, 7, 8 ]).reverse();  
 
 let BINARY_SEGMENTS = [
     0b1000000, // 0
@@ -99,7 +122,20 @@ BINARY_SEGMENTS = BINARY_SEGMENTS
     .map( transformarStringBinario );
 
 // position of buffer array
-let position = 0;
+let posicion = 0;
 
-// infinite timer
-setInterval( main, 1000 );
+// timer reference
+/** @type {NodeJS.Timer} */
+let timer;
+
+// API Johnny five
+const board = new five.Board();
+
+board.on('ready', main);
+board.on('close', function() {
+
+  // limpiamos el interval para cerrar el bucle 
+  // cuando finalizamos el programa 
+  // liberando recursos del dispositivo
+  clearInterval( timer );
+});

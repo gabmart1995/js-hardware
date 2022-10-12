@@ -26,7 +26,7 @@ function bitRead (buffer, posicion) {
 }
 
 
-function transformarNumeroString( numero, indice ){
+function transformarNumeroString( numero ){
   //console.log(numero.toString(2));
   let numeroResultado = numero.toString(2);
 
@@ -44,7 +44,7 @@ function transformarNumeroString( numero, indice ){
 }
 
 
-function transformarStringBinario( cadenaBinaria, indice ){
+function transformarStringBinario( cadenaBinaria ){
 
   const buffer = Buffer.alloc( SEGMENTS_LENGTH, 00);
 
@@ -105,7 +105,7 @@ board.on("ready", function(){
 
 
 
-      for ( let i = 0; i < puertos.length; i++ ) {
+      /*for ( let i = 0; i < puertos.length; i++ ) {
         let puerto = puertos[i];
         let buffer = result[i];
 
@@ -123,60 +123,61 @@ board.on("ready", function(){
           bit = bitRead( result[0], j );
           console.log({ puerto: puertos[j], bit });
           //board.digitalWrite( puertos[i], bit );
-        }*/
+        }
 
         //console.log({ puerto, bit });
 
         //let bit = bitRead( result[0], i );
         //console.log({ puerto: puertos[], bit, i, totalPuertos: (puertos.length - 1) });
 
-        /*for (let j = (result[0].length - 1); j >= 0 ; j--) { 
+        for (let j = (result[0].length - 1); j >= 0 ; j--) { 
           let bit = bitRead(  result[0], j );
           console.log({ puerto, bit });
           // sboard.digitalWrite( puerto, bit );
-        }*/
-      }
+        }
+      }*/
 
 
-
-      // board.digitalWrite( puertos[0], 0 );
+      // a
+      board.digitalWrite( puertos[0], 0 );
 
       // b
-      // board.digitalWrite( puertos[1], 0 );
+      board.digitalWrite( puertos[1], 0 );
 
       // c
-      // board.digitalWrite( puertos[2], 0 );
+      board.digitalWrite( puertos[2], 0 );
 
       // d
-      // board.digitalWrite( puertos[3], 0 );
+      board.digitalWrite( puertos[3], 0 );
 
       // e
-      // board.digitalWrite( puertos[4], 0 );
+      board.digitalWrite( puertos[4], 0 );
 
       // f
-      // board.digitalWrite( puertos[5], 0 );
+      board.digitalWrite( puertos[5], 0 );
 
       // g
-      // board.digitalWrite( puertos[6], 1 );
+      board.digitalWrite( puertos[6], 1 );
 
-    if (numero >= 9 ) {
+    /*if (numero >= 9 ) {
       numero = 0;
       return;
     }
 
-    numero++;
+    numero++;*/
   };
 
   // console.log( five.Pin.OUTPUT );
 
   // inicializamos los puertos
   puertos.forEach( puerto => {
-    // console.log( puerto );
     board.pinMode(puerto, five.Pin.OUTPUT);
   });
 
+  iluminarSegmento();
+
   // ejecutar la funcion cada segundo
-  setInterval( iluminarSegmento, 1000 );
+  // setInterval( iluminarSegmento, 1000 );
 });
   
 
