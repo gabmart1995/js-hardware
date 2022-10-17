@@ -10,4 +10,4 @@ Simulación de un circuito display de 7 segmentos, cuenta los numeros desde el 0
 Este ejemplo se utiliza para practicar las condicionales, bucles, funciones y conocer el funcionamiento del dispositivo 7 segmentos. 
 
 ### references
-["thinker cad"](https://www.tinkercad.com/things/94u16iXJxPC?sharecode=wVj4O0xgI9O6ihHYAu6a7eC3fwTujOBJioVBKlRgKWU)
+Para ver el diseño puedes visitar el enlace de ["thinker cad"](https://www.tinkercad.com/things/94u16iXJxPC?sharecode=wVj4O0xgI9O6ihHYAu6a7eC3fwTujOBJioVBKlRgKWU)
