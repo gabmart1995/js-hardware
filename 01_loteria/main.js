@@ -1,5 +1,11 @@
 const { Board, Button } = require('johnny-five');
 
+/**
+ * Genera un numero aleatorio entre los parametros seleccionados
+ * @param {number} min minimo del rango para generar el numero
+ * @param {umber} max maximo del rango para generar número
+ * @returns {number}
+ */
 function generatenumber( min = 1, max = 100 ) {
 
 	let value = Math.random() * ( max - min ) + min;
@@ -9,7 +15,7 @@ function generatenumber( min = 1, max = 100 ) {
 }
 
 /**
- * Función que maneja la pulsacion del boton
+ * Función que maneja la pulsación del boton
  */
 function pressButton() {
 	
