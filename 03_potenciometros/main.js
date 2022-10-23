@@ -8,19 +8,25 @@
  * entros a grados 0-180°
  */
 
-const { Board, Sensor } = require('johnny-five');
+const { Board, Sensor, Led } = require('johnny-five');
 
 const board = new Board();
 
 board.on('ready', function() {
-    const potenciometer = new Sensor('A3');
+    const potenciometer = new Sensor('A0');
+    const led = new Led( 6 );
 
     potenciometer.on('change', function() {
         const { value, raw } = potenciometer;
-        
+    
         console.log('\n');
         console.table({ value, raw });
+
+        // le pasamos el 5v
+        led.brightness( value / 4 );
     });
+
+    
 });
 
 board.on('fail', function( event ) {
