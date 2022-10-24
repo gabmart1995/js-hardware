@@ -24,9 +24,7 @@ board.on('ready', function() {
 
         // le pasamos el 5v
         led.brightness( value / 4 );
-    });
-
-    
+    });    
 });
 
 board.on('fail', function( event ) {
