@@ -13,17 +13,20 @@ const { Board, Sensor, Led } = require('johnny-five');
 const board = new Board();
 
 board.on('ready', function() {
+
     const potenciometer = new Sensor('A0');
-    const led = new Led( 6 );
+    const led = new Led( 11 );
 
     potenciometer.on('change', function() {
-        const { value, raw } = potenciometer;
-    
-        console.log('\n');
-        console.table({ value, raw });
 
-        // le pasamos el 5v
-        led.brightness( value / 4 );
+        const { value, raw } = potenciometer;
+        const brightness = Math.floor( value / 4 );
+    
+        // console.table({ value, raw });
+        console.table({ value, brightness: brightness });
+
+        // ajustamos el brillo
+        led.brightness( brightness );
     });    
 });
 
