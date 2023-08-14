@@ -29,4 +29,17 @@ O en caso de querer compilar manualmente el paquete, en linux necesitas el paque
 
 En Windows debes tener instalado Visual Studio seguir la instalación de [node-gyp](https://github.com/nodejs/node-gyp#installation) y tener paciencia.
 
+## configuracion
+En configuraciones linux o mac puede aparecer error "abriendo puerto serial" para solucionarlos 
+debes añadir tu usuario a la lista de usuarios permitidos para manipular los puertos
+primero revisa los permisos
+
+`ls -l /dev/ttyACM*`  // linux y mac
+
+Luego modifica la lista de usuarios con el siguiente comando
+
+`sudo usermod -a -G dialout <username>` donde username es tu nombre de usuario. 
+
+Debes cerrar sesión para que tome los cambios. con eso tienes acceso a los puertos
+
 
