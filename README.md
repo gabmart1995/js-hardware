@@ -1,6 +1,6 @@
-# jhonny-five-example
+# JavaScript Hardware
 
-Repositorio de practicas con arduino y jhonny-five.
+Repositorio de practicas con arduino y jhonny-five para programar microcontroladores.
 
 ### Que incluye
 
@@ -10,16 +10,23 @@ Repositorio de practicas con arduino y jhonny-five.
 - 03_potenciometros: ejercio practico sobre el control de flujo de energía.
 
 ## Atención:
-
-Leer con atencion la documentacion de serial port sobre las versiones de node
-compatibles con el paquete, ofrece soporte hasta node versión 12. 
-
-### requisitos
-node == 12
-
-Recomendamos tener la version LTS de node version 12. Sino lo tienes recomendamos
-instalar nvm para gestionar las dependencias de tu sistema.
+Leer con atención la documentación de serialport sobre las versiones de node
+compatibles con el paquete. Ofrece soporte a sus binarios para descargar hasta node versión 12
+tanto en sistemas Linux como Windows. 
 
 Más informacion [aqui](https://serialport.io/docs/guide-platform-support)
+
+Para versiones superiores de Node debes compilar manualmente las dependencias, pero asegurate de seguir los pasos de [instalación](https://serialport.io/docs/guide-installation#ubuntudebian-linux)
+
+### requisitos
+Recomendamos que para trabajar en este proyecto y no sabes compilar nativamente, tener la version LTS de Node version 12 es buena opción. Sino lo tienes instalado recomendamos instalar [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) o en windows [nvm-windows](https://github.com/coreybutler/nvm-windows) para gestionar las versiones de Node de tu sistema operativo.
+
+
+## compilacion de serialport
+O en caso de querer compilar manualmente el paquete, en linux necesitas el paquete `build-essential` para crear los binarios que se utilizan para trabajar.
+
+`sudo apt install build-essential`
+
+En Windows debes tener instalado Visual Studio y seguir las instalacion de [node-gyp](https://github.com/nodejs/node-gyp#installation) y tener paciencia.
 
 
