@@ -133,10 +133,6 @@ board.on("close", function() {
 
 // fail board
 board.on('fail', function( event ) {
-	console.log(
-	  '%s envio un "fallo" mensaje: %s', 
-	  event.class, 
-	  event.message
-	);
+	console.log('%s envio un "fallo" mensaje: %s', event.class, event.message);
 });
 

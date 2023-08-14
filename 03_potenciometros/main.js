@@ -19,7 +19,7 @@ board.on('ready', function() {
 
     potenciometer.on('change', function() {
 
-        const { value, raw } = potenciometer;
+        const { value } = potenciometer;
         const brightness = Math.floor( value / 4 );
     
         // console.table({ value, raw });
@@ -31,9 +31,5 @@ board.on('ready', function() {
 });
 
 board.on('fail', function( event ) {
-	console.log(
-	  '%s envio un "fallo" mensaje: %s', 
-	  event.class, 
-	  event.message
-	);
+	console.log('%s envio un "fallo" mensaje: %s', event.class, event.message);
 });
