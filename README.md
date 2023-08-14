@@ -27,6 +27,6 @@ O en caso de querer compilar manualmente el paquete, en linux necesitas el paque
 
 `sudo apt install build-essential`
 
-En Windows debes tener instalado Visual Studio y seguir las instalacion de [node-gyp](https://github.com/nodejs/node-gyp#installation) y tener paciencia.
+En Windows debes tener instalado Visual Studio seguir la instalación de [node-gyp](https://github.com/nodejs/node-gyp#installation) y tener paciencia.
 
 
